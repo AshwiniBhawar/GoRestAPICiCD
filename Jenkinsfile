@@ -13,7 +13,12 @@ pipeline {
                 echo "Deploying to QA"
             }
         }
-        
+	    
+         stage('Checkout') {
+            steps {
+                git url: 'https://github.com/AshwiniBhawar/GoRestAPICiCD'
+            }
+        }
 
         stage('Pull Docker Image') {
                     steps {
