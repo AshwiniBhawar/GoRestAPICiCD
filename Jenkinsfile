@@ -13,7 +13,12 @@ pipeline {
                 echo "Deploying to QA"
             }
         }
-        
+		
+        stage('Checkout') {
+            steps {
+                git url: 'https://github.com/AshwiniBhawar/GoRestAPICiCD'
+            }
+        }
 
         stage('Pull Docker Image') {
                     steps {
@@ -34,7 +39,7 @@ pipeline {
                             alwaysLinkToLastBuild: false,
                             keepAll: true,
                             reportDir: 'newman',
-                            reportFiles: 'gorest.html',
+                            reportFiles: '*.html',
                             reportName: 'GoRestAPIReport',
                             reportTitles: ''
                         ])               
